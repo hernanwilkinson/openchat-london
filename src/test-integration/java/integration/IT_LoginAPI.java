@@ -32,7 +32,8 @@ public class IT_LoginAPI {
                 .contentType(JSON)
                 .body("id", is(ANTONY.id()))
                 .body("username", is(ANTONY.username()))
-                .body("about", is(ANTONY.about()));
+                .body("about", is(ANTONY.about()))
+                .body("url",is(ANTONY.url()));
     }
 
     private String withJsonContaining(String username, String password) {
