@@ -38,4 +38,9 @@ public class UserBuilder {
     public User build() {
         return new User(id, username, password, about, url);
     }
+
+    public UserBuilder withUrl(String url) {
+        this.url = url;
+        return this;
+    }
 }

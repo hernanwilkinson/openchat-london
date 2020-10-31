@@ -39,6 +39,7 @@ public class UsersAPIShould {
                                             .withUsername(USERNAME)
                                             .withPassword(PASSWORD)
                                             .withAbout(ABOUT)
+                                            .withUrl(URL)
                                             .build();
     private static final List<User> USERS = asList(USER);
 

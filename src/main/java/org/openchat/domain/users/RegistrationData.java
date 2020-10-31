@@ -7,11 +7,13 @@ public class RegistrationData {
     private final String username;
     private final String password;
     private final String about;
+    private final String url;
 
     public RegistrationData(String username, String password, String about, String url) {
         this.username = username;
         this.password = password;
         this.about = about;
+        this.url = url;
     }
 
     public String username() {
@@ -37,6 +39,6 @@ public class RegistrationData {
     }
 
     public String url() {
-        return "hardcoded registrationdata url";
+        return url;
     }
 }
