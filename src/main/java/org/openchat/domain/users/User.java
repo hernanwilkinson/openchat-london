@@ -45,6 +45,6 @@ public class User {
     }
 
     public String url() {
-        return "hardcoded url";
+        return url;
     }
 }
