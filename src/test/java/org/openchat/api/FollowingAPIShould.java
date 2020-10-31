@@ -85,7 +85,8 @@ public class FollowingAPIShould {
         return new JsonObject()
                         .add("id", followee.id())
                         .add("username", followee.username())
-                        .add("about", followee.about());
+                        .add("about", followee.about())
+                        .add("url",followee.url());
     }
 
     private String JsonContaining(Following following) {
