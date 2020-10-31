@@ -45,6 +45,7 @@ public class UserService {
         return new User(userId,
                         registrationData.username(),
                         registrationData.password(),
-                        registrationData.about());
+                        registrationData.about(),
+                        registrationData.url());
     }
 }
