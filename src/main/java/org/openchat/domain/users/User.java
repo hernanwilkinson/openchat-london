@@ -43,6 +43,6 @@ public class User {
     }
 
     public String url() {
-        return "www.twitter.com/alice";
+        return "hardcoded url";
     }
 }

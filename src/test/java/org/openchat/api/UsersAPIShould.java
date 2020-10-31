@@ -30,14 +30,16 @@ public class UsersAPIShould {
     private static final String USERNAME = "Alice";
     private static final String PASSWORD = "1slkjf234";
     private static final String ABOUT = "About Alice";
+    private static final String URL = "www.twitter.com/alice";
 
-    private static final RegistrationData REGISTRATION_DATA = new RegistrationData(USERNAME, PASSWORD, ABOUT);
+    private static final RegistrationData REGISTRATION_DATA = new RegistrationData(USERNAME, PASSWORD, ABOUT,URL);
 
     private static final User USER = aUser()
                                             .withId(USER_ID)
                                             .withUsername(USERNAME)
                                             .withPassword(PASSWORD)
                                             .withAbout(ABOUT)
+                                            .withUrl(URL)
                                             .build();
     private static final List<User> USERS = asList(USER);
 
@@ -115,6 +117,7 @@ public class UsersAPIShould {
                         .add("username", registrationData.username())
                         .add("password", registrationData.password())
                         .add("about", registrationData.about())
+                        .add("url", registrationData.url())
                         .toString();
     }
 

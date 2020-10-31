@@ -7,11 +7,17 @@ public class RegistrationData {
     private final String username;
     private final String password;
     private final String about;
+    private final String url;
 
     public RegistrationData(String username, String password, String about) {
+        this(username,password,about,"not defined url");
+    }
+
+    public RegistrationData(String username, String password, String about,String url) {
         this.username = username;
         this.password = password;
         this.about = about;
+        this.url = url;
     }
 
     public String username() {
@@ -34,5 +40,9 @@ public class RegistrationData {
     @Override
     public int hashCode() {
         return reflectionHashCode(this);
+    }
+
+    public String url() {
+        return url;
     }
 }
