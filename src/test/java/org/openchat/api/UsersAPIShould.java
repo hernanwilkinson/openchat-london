@@ -106,7 +106,8 @@ public class UsersAPIShould {
         return new JsonObject()
                         .add("id", user.id())
                         .add("username", user.username())
-                        .add("about", user.about());
+                        .add("about", user.about())
+                        .add("url",user.url());
     }
 
     private String jsonContaining(RegistrationData registrationData) {
@@ -114,6 +115,7 @@ public class UsersAPIShould {
                         .add("username", registrationData.username())
                         .add("password", registrationData.password())
                         .add("about", registrationData.about())
+                        .add("url",registrationData.url())
                         .toString();
     }
 
