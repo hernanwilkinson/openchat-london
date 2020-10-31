@@ -41,4 +41,8 @@ public class User {
     public int hashCode() {
         return reflectionHashCode(this);
     }
+
+    public String url() {
+        return "hardcoded user url";
+    }
 }

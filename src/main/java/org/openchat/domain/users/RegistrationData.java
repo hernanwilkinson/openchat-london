@@ -35,4 +35,8 @@ public class RegistrationData {
     public int hashCode() {
         return reflectionHashCode(this);
     }
+
+    public String url() {
+        return "hardcoded registrationdata url";
+    }
 }
