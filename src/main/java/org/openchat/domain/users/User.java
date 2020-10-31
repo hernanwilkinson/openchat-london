@@ -8,12 +8,14 @@ public class User {
     private final String username;
     private final String password;
     private final String about;
+    private final String url;
 
-    public User(String id, String username, String password, String about) {
+    public User(String id, String username, String password, String about, String url) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.about = about;
+        this.url = url;
     }
 
     public String id() {
@@ -40,5 +42,9 @@ public class User {
     @Override
     public int hashCode() {
         return reflectionHashCode(this);
+    }
+
+    public String url() {
+        return url;
     }
 }

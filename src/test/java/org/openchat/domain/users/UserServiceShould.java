@@ -22,10 +22,11 @@ public class UserServiceShould {
     private static final String USERNAME = "Alice";
     private static final String PASSWORD = "23dsd";
     private static final String ABOUT = "About";
+    private static final String URL = "www.twitter.com/alice";
     private static final RegistrationData REGISTRATION_DATA =
-                                            new RegistrationData(USERNAME, PASSWORD, ABOUT);
+                                            new RegistrationData(USERNAME, PASSWORD, ABOUT, URL);
 
-    private static final User USER = new User(USER_ID, USERNAME, PASSWORD, ABOUT);
+    private static final User USER = new User(USER_ID, USERNAME, PASSWORD, ABOUT, URL);
     private static final List<User> USERS = asList(USER);
     private static final Following FOLLOWING = new Following("followerId", "followeeId");
     private static final List<User> FOLLOWEES = USERS;
