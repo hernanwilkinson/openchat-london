@@ -8,10 +8,6 @@ public class RegistrationData {
     private final String password;
     private final String about;
 
-    public RegistrationData(String username, String password, String about) {
-        this(username, password, about, "not defined url");
-    }
-
     public RegistrationData(String username, String password, String about, String url) {
         this.username = username;
         this.password = password;

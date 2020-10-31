@@ -30,8 +30,9 @@ public class UsersAPIShould {
     private static final String USERNAME = "Alice";
     private static final String PASSWORD = "1slkjf234";
     private static final String ABOUT = "About Alice";
+    private static final String URL = "www.twitter.com/alice";
 
-    private static final RegistrationData REGISTRATION_DATA = new RegistrationData(USERNAME, PASSWORD, ABOUT);
+    private static final RegistrationData REGISTRATION_DATA = new RegistrationData(USERNAME, PASSWORD, ABOUT,URL);
 
     private static final User USER = aUser()
                                             .withId(USER_ID)
