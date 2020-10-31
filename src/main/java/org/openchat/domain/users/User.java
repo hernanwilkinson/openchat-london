@@ -9,10 +9,6 @@ public class User {
     private final String password;
     private final String about;
 
-    public User(String id, String username, String password, String about) {
-        this(id, username, password, about, "not defined url");
-    }
-
     public User(String id, String username, String password, String about, String url) {
         this.id = id;
         this.username = username;
