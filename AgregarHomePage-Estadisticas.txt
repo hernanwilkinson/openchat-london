@@ -1,0 +1,12 @@
+Camino de modificar todo de una usando change signature
+- modificar solo UserAPIShould.return_json_representing_a_newly_created_user()
+- Estadisticas hasta hacer fallar el test:
+  - Clases modificadas: 7
+  - Diferencias: 21
+- Estadisticas para hacer pasar los tests:
+  - Clases modificadas: 3
+  - Diferencias: 3 (todas iguales)
+  - COMENTARIO: Fallaron tests porque esta repetido como se convierte un usuario a Json
+- Renombrar url por homePage
+  - Clases: 14
+  - Diferencias: 48

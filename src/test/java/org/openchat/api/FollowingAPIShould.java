@@ -86,7 +86,7 @@ public class FollowingAPIShould {
                         .add("id", followee.id())
                         .add("username", followee.username())
                         .add("about", followee.about())
-                        .add("url",followee.url());
+                        .add("homePage",followee.homePage());
     }
 
     private String JsonContaining(Following following) {

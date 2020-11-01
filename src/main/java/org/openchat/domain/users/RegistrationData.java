@@ -7,13 +7,13 @@ public class RegistrationData {
     private final String username;
     private final String password;
     private final String about;
-    private final String url;
+    private final String homePage;
 
-    public RegistrationData(String username, String password, String about, String url) {
+    public RegistrationData(String username, String password, String about, String homePage) {
         this.username = username;
         this.password = password;
         this.about = about;
-        this.url = url;
+        this.homePage = homePage;
     }
 
     public String username() {
@@ -38,7 +38,7 @@ public class RegistrationData {
         return reflectionHashCode(this);
     }
 
-    public String url() {
-        return url;
+    public String homePage() {
+        return homePage;
     }
 }

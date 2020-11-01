@@ -8,14 +8,14 @@ public class User {
     private final String username;
     private final String password;
     private final String about;
-    private final String url;
+    private final String homePage;
 
-    public User(String id, String username, String password, String about, String url) {
+    public User(String id, String username, String password, String about, String homePage) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.about = about;
-        this.url = url;
+        this.homePage = homePage;
     }
 
     public String id() {
@@ -44,7 +44,7 @@ public class User {
         return reflectionHashCode(this);
     }
 
-    public String url() {
-        return url;
+    public String homePage() {
+        return homePage;
     }
 }

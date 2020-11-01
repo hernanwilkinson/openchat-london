@@ -49,6 +49,6 @@ public class UsersAPI {
                             json.getString("username", ""),
                             json.getString("password", ""),
                             json.getString("about", ""),
-                            json.getString("url",""));
+                            json.getString("homePage",""));
     }
 }
