@@ -1,4 +1,4 @@
-Camino manteniendo interface y harcodeando url
+Camino manteniendo interface y harcodeando homePage
 
 - Test de UserAPIShould fallando
   - Classes: 3
@@ -19,7 +19,10 @@ Camino manteniendo interface y harcodeando url
   - Classes: 2
   - Diferencias: 3
   - COMENTARIO: LOS TESTS DE ACEPTACION SIGUEN FALLANDO POR MAS QUE ESTE HARDCODEADO
--Sacar hardcoded url de User y RegistrationData
+-Sacar hardcoded homePage de User y RegistrationData
   - Classes: 4
   - Diferencias: 8
   - COMENTARIO: Ahora los tests de aceptación pasan
+- Renombrar url por HomePage
+  - Clases: 17
+  - Diferencias: 54

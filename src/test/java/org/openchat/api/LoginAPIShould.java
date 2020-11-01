@@ -68,7 +68,7 @@ public class LoginAPIShould {
                         .add("id", user.id())
                         .add("username", user.username())
                         .add("about", user.about())
-                        .add("url",user.url())
+                        .add("homePage",user.homePage())
                         .toString();
     }
 

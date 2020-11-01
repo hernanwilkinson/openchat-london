@@ -30,16 +30,16 @@ public class UsersAPIShould {
     private static final String USERNAME = "Alice";
     private static final String PASSWORD = "1slkjf234";
     private static final String ABOUT = "About Alice";
-    private static final String URL = "www.twitter.com/alice";
+    private static final String HOME_PAGE = "www.twitter.com/alice";
 
-    private static final RegistrationData REGISTRATION_DATA = new RegistrationData(USERNAME, PASSWORD, ABOUT,URL);
+    private static final RegistrationData REGISTRATION_DATA = new RegistrationData(USERNAME, PASSWORD, ABOUT, HOME_PAGE);
 
     private static final User USER = aUser()
                                             .withId(USER_ID)
                                             .withUsername(USERNAME)
                                             .withPassword(PASSWORD)
                                             .withAbout(ABOUT)
-                                            .withUrl(URL)
+                                            .withHomePage(HOME_PAGE)
                                             .build();
     private static final List<User> USERS = asList(USER);
 
@@ -109,7 +109,7 @@ public class UsersAPIShould {
                         .add("id", user.id())
                         .add("username", user.username())
                         .add("about", user.about())
-                        .add("url",user.url());
+                        .add("homePage",user.homePage());
     }
 
     private String jsonContaining(RegistrationData registrationData) {
@@ -117,7 +117,7 @@ public class UsersAPIShould {
                         .add("username", registrationData.username())
                         .add("password", registrationData.password())
                         .add("about", registrationData.about())
-                        .add("url",registrationData.url())
+                        .add("homePage",registrationData.homePage())
                         .toString();
     }
 

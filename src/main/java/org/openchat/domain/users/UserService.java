@@ -46,6 +46,6 @@ public class UserService {
                         registrationData.username(),
                         registrationData.password(),
                         registrationData.about(),
-                        registrationData.url());
+                        registrationData.homePage());
     }
 }
