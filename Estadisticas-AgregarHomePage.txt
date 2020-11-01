@@ -1,0 +1,25 @@
+Camino manteniendo interface y harcodeando url
+
+- Test de UserAPIShould fallando
+  - Classes: 3
+  - Diferencias: 4
+- Test de UserAPIShould pasando
+  - Classes: 4
+  - Diferencias: 5
+- Resto de Test de API pasando
+  - Classes: 2
+  - Diferencias: 2
+- Test de UserServiceShould que pasa de entrada
+  - Classes: 2
+  - Diferencias: 4
+- Remove User.constructor(user,pass,about)
+  - Classes: 3
+  - Diferencias: 4
+- Remove RegistrationData.constructor(user,pass,about)
+  - Classes: 2
+  - Diferencias: 3
+  - COMENTARIO: LOS TESTS DE ACEPTACION SIGUEN FALLANDO POR MAS QUE ESTE HARDCODEADO
+-Sacar hardcoded url de User y RegistrationData
+  - Classes: 4
+  - Diferencias: 8
+  - COMENTARIO: Ahora los tests de aceptación pasan
