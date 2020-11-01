@@ -9,7 +9,7 @@ public class UserBuilder {
     private String username = "Username";
     private String password = "password";
     private String about = "about";
-    private String url = "url";
+    private String homePage = "homePage";
 
     public static UserBuilder aUser() {
         return new UserBuilder();
@@ -36,11 +36,11 @@ public class UserBuilder {
     }
 
     public User build() {
-        return new User(id, username, password, about,url);
+        return new User(id, username, password, about, homePage);
     }
 
-    public UserBuilder withUrl(String url) {
-        this.url = url;
+    public UserBuilder withHomePage(String homePage) {
+        this.homePage = homePage;
         return this;
     }
 }

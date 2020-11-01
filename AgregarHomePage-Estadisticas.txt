@@ -1,0 +1,32 @@
+Camino hardcodeando url
+- modificar solo UserAPIShould.return_json_representing_a_newly_created_user()
+- Estadisticas hasta hacer fallar el test:
+  - Clases modificadas: 2
+  - Diferencias: 2
+- Estadisticas para hacer pasar los tests:
+  - Clases modificadas: 8
+  - Diferencias: 15
+  - COMENTARIO:
+    - Quedaron urls hardcodeadas
+    - Pasaron los tests de API pero nada funciona de verdad y no falla ningun test
+    - Hay que ver test de UserService y UserRepository
+- Estadisticas para hacer pasar los tests de UserServiceShould:
+- Clases modificadas: 7
+- Diferencias: 7
+- COMENTARIO:
+  - Pasan todos los tests pero User.url devuelve algo harcodeado
+  - Solo fallan los tests de aceptacion
+- Estadisticas borrado de constructores sin url
+- Clases modificadas: 3
+- Diferencias: 3
+- COMENTARIO:
+  - Pasan todos los tests pero User.url devuelve algo harcodeado
+  - Solo fallan los tests de aceptacion
+- Estadisticas todos los tests pasando
+- Clases modificadas: 1
+- Diferencias: 1
+- COMENTARIO:
+  - Saque hardcodeo de url y paso todo
+- Renombrar url por homePage
+    - Clases: 14
+    - Diferencias: 39
