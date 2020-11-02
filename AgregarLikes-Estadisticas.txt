@@ -13,3 +13,6 @@
 - Test same_user_likes_do_not_count
     - Clases: 3
     - Diferencias: 6
+- Test return_post_identified_by_id
+    - Clases: 2
+    - Diferencias: 2

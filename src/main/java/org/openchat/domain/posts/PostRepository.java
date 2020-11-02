@@ -26,6 +26,9 @@ public class PostRepository {
     }
 
     public Post postIdentifiedAs(String postid) {
-        throw new RuntimeException();
+        return posts.stream()
+                .filter(post->post.postId().equals(postid))
+                .findFirst()
+                .get();
     }
 }

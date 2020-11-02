@@ -45,4 +45,12 @@ public class PostRepositoryShould {
         assertThat(result).containsExactly(ALICE_POST_2, CHARLIE_POST_1, ALICE_POST_1);
     }
 
+    @Test public void
+    return_post_identified_by_id() {
+        Post post = postRepository.postIdentifiedAs(ALICE_POST_1.postId());
+
+        assertThat(post).isEqualTo(ALICE_POST_1);
+    }
+
+
 }
