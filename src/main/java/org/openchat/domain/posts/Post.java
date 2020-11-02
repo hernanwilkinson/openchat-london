@@ -10,6 +10,7 @@ public class Post {
     private final String userId;
     private final String text;
     private final LocalDateTime dateTime;
+    private int likes = 0;
 
     public Post(String postId, String userId, String text, LocalDateTime dateTime) {
         this.postId = postId;
@@ -42,5 +43,13 @@ public class Post {
     @Override
     public int hashCode() {
         return reflectionHashCode(this);
+    }
+
+    public void liked() {
+        likes++;
+    }
+
+    public int likes() {
+        return likes;
     }
 }

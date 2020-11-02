@@ -24,4 +24,8 @@ public class PostRepository {
                     .filter(post -> userIds.contains(post.userId()))
                     .collect(toList());
     }
+
+    public Post postIdentifiedAs(String postid) {
+        throw new RuntimeException();
+    }
 }

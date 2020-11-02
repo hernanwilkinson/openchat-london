@@ -7,3 +7,6 @@
 - Test like_post
     - Clases: 2
     - Diferencias: 3
+- Test different_users_likes_do_count
+    - Clases: 4
+    - Diferencias: 6

@@ -68,8 +68,23 @@ public class PostServiceShould {
     }
     @Test public void
     like_post() {
+        Post NEW_POST = new PostBuilder().withPostId(POSTID).withUserId(USER_ID).withText("text").withDateTime(DATE_TIME).build();
+        given(postRepository.postIdentifiedAs(POSTID)).willReturn(NEW_POST);
+
         int likes = service.likePost(POSTID,USER_ID);
 
         assertThat(likes).isEqualTo(1);
+    }
+    @Test public void
+    different_users_likes_do_count() {
+        Post NEW_POST = new PostBuilder().withPostId(POSTID).withUserId(USER_ID).withText("text").withDateTime(DATE_TIME).build();
+        final String anotherUserId = UUID.randomUUID().toString();
+
+        given(postRepository.postIdentifiedAs(POSTID)).willReturn(NEW_POST);
+
+        service.likePost(POSTID,USER_ID);
+        int likes = service.likePost(POSTID, anotherUserId);
+
+        assertThat(likes).isEqualTo(2);
     }
 }

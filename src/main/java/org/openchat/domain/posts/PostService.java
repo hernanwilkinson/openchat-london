@@ -45,6 +45,9 @@ public class PostService {
     }
 
     public int likePost(String postId, String userId) {
-        return 1;
+        Post post = repository.postIdentifiedAs(postId);
+        post.liked();
+
+        return post.likes();
     }
 }
