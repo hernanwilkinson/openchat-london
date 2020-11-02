@@ -44,7 +44,7 @@ public class PostService {
         }
     }
 
-    public void likePost(String postId, String userId) {
+    public int likePost(String postId, String userId) {
         throw new RuntimeException();
     }
 }

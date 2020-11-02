@@ -100,6 +100,21 @@ public class PostsAPIShould {
 
         verify(postService).likePost(POST_ID,USER_ID);
     }
+    @Test public void
+    like_a_post_return_number_of_likes() throws InappropriateLanguageException {
+
+        postsAPI.createPost(request, response);
+        given(likeRequest.params("publicationId")).willReturn(POST_ID);
+        given(likeRequest.body()).willReturn(new JsonObject()
+                .add("userId",USER_ID).toString());
+        given(postService.likePost(POST_ID,USER_ID)).willReturn(1);
+
+        String result = postsAPI.likePost(likeRequest,likeResponse);
+
+        verify(likeResponse).status(200);
+        verify(likeResponse).type("application/json");
+        assertThat(result).isEqualTo(new JsonObject().add("likes",1).toString());
+    }
     private String jsonContaining(List<Post> posts) {
         JsonArray json = new JsonArray();
         posts.forEach(post -> json.add(jsonObjectFor(post)));

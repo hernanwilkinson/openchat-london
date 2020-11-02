@@ -56,9 +56,15 @@ public class PostsAPI {
         return json.getString("text", "");
     }
 
-    public void likePost(Request request, Response likeResponse) {
-        postService.likePost(
+    public String likePost(Request request, Response response) {
+        int likes = postService.likePost(
                 request.params("publicationId"),
                 Json.parse(request.body()).asObject().getString("userId", ""));
+
+        response.status(OK_200);
+        response.type("application/json");
+        return new JsonObject()
+                .add("likes",likes)
+                .toString();
     }
 }
