@@ -66,5 +66,10 @@ public class PostServiceShould {
 
         assertThat(result).isEqualTo(POSTS);
     }
+    @Test public void
+    like_post() {
+        int likes = service.likePost(POSTID,USER_ID);
 
+        assertThat(likes).isEqualTo(1);
+    }
 }

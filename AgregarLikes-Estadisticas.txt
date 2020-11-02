@@ -4,3 +4,6 @@
 - Test like_a_post_return_number_of_likes
     - Clases: 2
     - Diferencias: 3
+- Test like_post
+    - Clases: 2
+    - Diferencias: 3
