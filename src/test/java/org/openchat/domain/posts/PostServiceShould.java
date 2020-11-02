@@ -87,4 +87,15 @@ public class PostServiceShould {
 
         assertThat(likes).isEqualTo(2);
     }
+    @Test public void
+    same_user_likes_do_not_count() {
+        Post NEW_POST = new PostBuilder().withPostId(POSTID).withUserId(USER_ID).withText("text").withDateTime(DATE_TIME).build();
+
+        given(postRepository.postIdentifiedAs(POSTID)).willReturn(NEW_POST);
+
+        service.likePost(POSTID,USER_ID);
+        int likes = service.likePost(POSTID, USER_ID);
+
+        assertThat(likes).isEqualTo(1);
+    }
 }
