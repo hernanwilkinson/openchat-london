@@ -5,6 +5,8 @@ import org.openchat.domain.posts.*;
 import org.openchat.domain.users.IdGenerator;
 import org.openchat.domain.users.UserRepository;
 import org.openchat.domain.users.UserService;
+import spark.Request;
+import spark.Response;
 
 import static spark.Spark.get;
 import static spark.Spark.options;
@@ -53,6 +55,11 @@ public class Routes {
         post("followings", (req, res) -> followingAPI.createFollowing(req, res));
         get("followings/:followerId/followees", (req, res) -> followingAPI.getFollowees(req, res));
         get("users/:userId/wall", (req, res) -> wallAPI.wallByUser(req, res));
+        post("publications/:publicationId/like", (req, res) -> likePublication(req,res));
+    }
+
+    private String likePublication(Request request, Response response) {
+        throw new RuntimeException("Should implement");
     }
 
     private void swaggerRoutes() {

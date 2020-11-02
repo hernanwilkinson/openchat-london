@@ -10,9 +10,7 @@ import org.junit.Test;
 
 import static com.eclipsesource.json.Json.parse;
 import static integration.APITestSuit.BASE_URL;
-import static integration.dsl.OpenChatTestDSL.assertThatJsonPostMatchesPost;
-import static integration.dsl.OpenChatTestDSL.createFollowing;
-import static integration.dsl.OpenChatTestDSL.register;
+import static integration.dsl.OpenChatTestDSL.*;
 import static integration.dsl.PostDSL.ITPostBuilder.aPost;
 import static integration.dsl.UserDSL.ITUserBuilder.aUser;
 import static io.restassured.RestAssured.when;
@@ -49,24 +47,24 @@ public class IT_WallAPI {
         POST_5_ALICE   = aPost().withUserId(ALICE  .id()).withText("Post 5").build();
         POST_6_BOB     = aPost().withUserId(BOB    .id()).withText("Post 6").build();
     }
-    
+
     @Test public void
     return_a_wall_containing_posts_from_the_user_and_her_followees() {
         givenPosts(POST_1_ALICE,
-                   POST_2_BOB,
-                   POST_3_CHARLIE,
-                   POST_4_JULIE,
-                   POST_5_ALICE,
-                   POST_6_BOB);
+                POST_2_BOB,
+                POST_3_CHARLIE,
+                POST_4_JULIE,
+                POST_5_ALICE,
+                POST_6_BOB);
         andAliceFollows(BOB, CHARLIE);
 
         whenAliceChecksHerWall();
 
         thenSheSeesThePosts(POST_6_BOB,
-                            POST_5_ALICE,
-                            POST_3_CHARLIE,
-                            POST_2_BOB,
-                            POST_1_ALICE);
+                POST_5_ALICE,
+                POST_3_CHARLIE,
+                POST_2_BOB,
+                POST_1_ALICE);
     }
 
     private void givenPosts(ITPost... posts) {
@@ -87,7 +85,7 @@ public class IT_WallAPI {
 
     private void thenSheSeesThePosts(ITPost... posts) {
         for (int index = 0; index < posts.length; index++) {
-            assertThatJsonPostMatchesPost(wall.get(index), posts[index]);
+            assertThatJsonPostMatchesPost(wall.get(index), posts[index],0);
         }
     }
 
