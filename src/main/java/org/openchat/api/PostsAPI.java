@@ -55,4 +55,10 @@ public class PostsAPI {
         JsonObject json = Json.parse(request.body()).asObject();
         return json.getString("text", "");
     }
+
+    public void likePost(Request request, Response likeResponse) {
+        postService.likePost(
+                request.params("publicationId"),
+                Json.parse(request.body()).asObject().getString("userId", ""));
+    }
 }

@@ -36,6 +36,8 @@ public class PostsAPIShould {
 
     @Mock Request request;
     @Mock Response response;
+    @Mock Request likeRequest;
+    @Mock Response likeResponse;
 
     @Mock PostService postService;
 
@@ -86,7 +88,18 @@ public class PostsAPIShould {
         verify(response).type("application/json");
         assertThat(result).isEqualTo(jsonContaining(POSTS));
     }
+    @Test public void
+    can_like_a_post() throws InappropriateLanguageException {
 
+        postsAPI.createPost(request, response);
+        given(likeRequest.params("publicationId")).willReturn(POST_ID);
+        given(likeRequest.body()).willReturn(new JsonObject()
+                .add("userId",USER_ID).toString());
+
+        postsAPI.likePost(likeRequest,likeResponse);
+
+        verify(postService).likePost(POST_ID,USER_ID);
+    }
     private String jsonContaining(List<Post> posts) {
         JsonArray json = new JsonArray();
         posts.forEach(post -> json.add(jsonObjectFor(post)));

@@ -43,4 +43,8 @@ public class PostService {
             throw new InappropriateLanguageException();
         }
     }
+
+    public void likePost(String postId, String userId) {
+        throw new RuntimeException();
+    }
 }

@@ -1,0 +1,3 @@
+- Test can_like_a_post
+    - Clases: 3
+    - Diferencias: 5
