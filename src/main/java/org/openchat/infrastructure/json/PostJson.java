@@ -27,6 +27,7 @@ public class PostJson {
                 .add("postId", post.postId())
                 .add("userId", post.userId())
                 .add("text", post.text())
-                .add("dateTime", formatter.format(post.dateTime()));
+                .add("dateTime", formatter.format(post.dateTime()))
+                .add("likes",post.likes());
     }
 }

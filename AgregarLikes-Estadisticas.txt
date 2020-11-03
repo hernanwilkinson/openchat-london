@@ -19,3 +19,6 @@
 - Test throw_exception_with_invalid_post_id
     - Clases: 7
     - Diferencias: 16
+- Likes en Post json
+    - Clases: 3
+    - Diferencias: 3

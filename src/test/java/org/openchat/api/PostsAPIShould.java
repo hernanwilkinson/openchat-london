@@ -131,7 +131,8 @@ public class PostsAPIShould {
                         .add("postId", post.postId())
                         .add("userId", post.userId())
                         .add("text", post.text())
-                        .add("dateTime", "2018-01-10T14:30:00Z");
+                        .add("dateTime", "2018-01-10T14:30:00Z")
+                        .add("likes", post.likes());
     }
 
     private String jsonContaining(String text) {
