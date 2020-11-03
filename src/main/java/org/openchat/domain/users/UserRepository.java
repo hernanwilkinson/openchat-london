@@ -1,7 +1,5 @@
 package org.openchat.domain.users;
 
-import org.openchat.domain.posts.PostService;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +54,7 @@ public class UserRepository {
                     .findFirst();
     }
 
-    public User userByOrThrow(String userId) throws InvalidUser {
-        return userBy(userId).orElseThrow(() -> new InvalidUser());
+    public User userByOrThrow(String userId) throws InvalidUserException {
+        return userBy(userId).orElseThrow(() -> new InvalidUserException());
     }
 }

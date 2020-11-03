@@ -6,7 +6,7 @@ import org.openchat.domain.posts.InappropriateLanguageException;
 import org.openchat.domain.posts.InvalidPostException;
 import org.openchat.domain.posts.Post;
 import org.openchat.domain.posts.PostService;
-import org.openchat.domain.users.InvalidUser;
+import org.openchat.domain.users.InvalidUserException;
 import spark.Request;
 import spark.Response;
 
@@ -59,22 +59,21 @@ public class PostsAPI {
     }
 
     public String likePost(Request request, Response response) {
+        response.type("application/json");
         try {
             int likes = postService.likePost(
                     request.params("publicationId"),
                     Json.parse(request.body()).asObject().getString("userId", ""));
 
             response.status(OK_200);
-            response.type("application/json");
             return new JsonObject()
                     .add("likes", likes)
                     .toString();
-        } catch (InvalidPostException e){
-            // TODO!!
-            return "Implementar!!";
-        } catch (InvalidUser invalidUser) {
+        } catch (InvalidPostException invalidPostException){
             response.status(NOT_FOUND_404);
-            response.type("application/json");
+            return "Invalid post";
+        } catch (InvalidUserException invalidUserException) {
+            response.status(NOT_FOUND_404);
             return "Invalid user";
         }
     }

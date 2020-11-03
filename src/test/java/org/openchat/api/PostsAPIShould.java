@@ -11,7 +11,7 @@ import org.openchat.domain.posts.InappropriateLanguageException;
 import org.openchat.domain.posts.InvalidPostException;
 import org.openchat.domain.posts.Post;
 import org.openchat.domain.posts.PostService;
-import org.openchat.domain.users.InvalidUser;
+import org.openchat.domain.users.InvalidUserException;
 import org.openchat.infrastructure.builders.PostBuilder;
 import spark.Request;
 import spark.Response;
@@ -91,7 +91,7 @@ public class PostsAPIShould {
         assertThat(result).isEqualTo(jsonContaining(POSTS));
     }
     @Test public void
-    can_like_a_post() throws InappropriateLanguageException, InvalidPostException, InvalidUser {
+    can_like_a_post() throws InappropriateLanguageException, InvalidPostException, InvalidUserException {
 
         postsAPI.createPost(request, response);
         given(likeRequest.params("publicationId")).willReturn(POST_ID);
@@ -103,7 +103,7 @@ public class PostsAPIShould {
         verify(postService).likePost(POST_ID,USER_ID);
     }
     @Test public void
-    like_a_post_return_number_of_likes() throws InappropriateLanguageException, InvalidPostException, InvalidUser {
+    like_a_post_return_number_of_likes() throws InappropriateLanguageException, InvalidPostException, InvalidUserException {
 
         postsAPI.createPost(request, response);
         given(likeRequest.params("publicationId")).willReturn(POST_ID);
@@ -118,18 +118,32 @@ public class PostsAPIShould {
         assertThat(result).isEqualTo(new JsonObject().add("likes",1).toString());
     }
     @Test public void
-    reject_likes_from_not_registered_user() throws InvalidPostException, InvalidUser {
+    reject_likes_from_not_registered_user() throws InvalidPostException, InvalidUserException {
 
         postsAPI.createPost(request, response);
         given(likeRequest.params("publicationId")).willReturn(POST_ID);
         given(likeRequest.body()).willReturn(new JsonObject()
                 .add("userId","").toString());
-        given(postService.likePost(POST_ID,"")).willThrow(new InvalidUser());
+        given(postService.likePost(POST_ID,"")).willThrow(new InvalidUserException());
 
         String result = postsAPI.likePost(likeRequest,likeResponse);
 
         verify(likeResponse).status(404);
         assertThat(result).isEqualTo("Invalid user");
+    }
+    @Test public void
+    reject_likes_from_invalid_post() throws InvalidPostException, InvalidUserException {
+
+        postsAPI.createPost(request, response);
+        given(likeRequest.params("publicationId")).willReturn("");
+        given(likeRequest.body()).willReturn(new JsonObject()
+                .add("userId",USER_ID).toString());
+        given(postService.likePost("",USER_ID)).willThrow(new InvalidPostException());
+
+        String result = postsAPI.likePost(likeRequest,likeResponse);
+
+        verify(likeResponse).status(404);
+        assertThat(result).isEqualTo("Invalid post");
     }
 
     private String jsonContaining(List<Post> posts) {
