@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.openchat.domain.posts.InappropriateLanguageException;
+import org.openchat.domain.posts.InvalidPostException;
 import org.openchat.domain.posts.Post;
 import org.openchat.domain.posts.PostService;
 import org.openchat.infrastructure.builders.PostBuilder;
@@ -89,7 +90,7 @@ public class PostsAPIShould {
         assertThat(result).isEqualTo(jsonContaining(POSTS));
     }
     @Test public void
-    can_like_a_post() throws InappropriateLanguageException {
+    can_like_a_post() throws InappropriateLanguageException, InvalidPostException {
 
         postsAPI.createPost(request, response);
         given(likeRequest.params("publicationId")).willReturn(POST_ID);
@@ -101,7 +102,7 @@ public class PostsAPIShould {
         verify(postService).likePost(POST_ID,USER_ID);
     }
     @Test public void
-    like_a_post_return_number_of_likes() throws InappropriateLanguageException {
+    like_a_post_return_number_of_likes() throws InappropriateLanguageException, InvalidPostException {
 
         postsAPI.createPost(request, response);
         given(likeRequest.params("publicationId")).willReturn(POST_ID);

@@ -8,6 +8,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.openchat.infrastructure.builders.PostBuilder.aPost;
 import static org.openchat.infrastructure.builders.UserBuilder.aUser;
 
@@ -46,11 +47,15 @@ public class PostRepositoryShould {
     }
 
     @Test public void
-    return_post_identified_by_id() {
+    return_post_identified_by_id() throws InvalidPostException {
         Post post = postRepository.postIdentifiedAs(ALICE_POST_1.postId());
 
         assertThat(post).isEqualTo(ALICE_POST_1);
     }
-
+    @Test public void
+    throw_exception_with_invalid_post_id() {
+        assertThatThrownBy(() -> postRepository.postIdentifiedAs(""))
+                .isExactlyInstanceOf(InvalidPostException.class);
+    }
 
 }

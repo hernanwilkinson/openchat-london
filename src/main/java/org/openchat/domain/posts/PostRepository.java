@@ -25,10 +25,10 @@ public class PostRepository {
                     .collect(toList());
     }
 
-    public Post postIdentifiedAs(String postid) {
+    public Post postIdentifiedAs(String postid) throws InvalidPostException {
         return posts.stream()
                 .filter(post->post.postId().equals(postid))
                 .findFirst()
-                .get();
+                .orElseThrow(()->new InvalidPostException());
     }
 }

@@ -16,3 +16,6 @@
 - Test return_post_identified_by_id
     - Clases: 2
     - Diferencias: 2
+- Test throw_exception_with_invalid_post_id
+    - Clases: 7
+    - Diferencias: 16

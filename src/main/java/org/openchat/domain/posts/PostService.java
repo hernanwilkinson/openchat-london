@@ -44,7 +44,7 @@ public class PostService {
         }
     }
 
-    public int likePost(String postId, String userId) {
+    public int likePost(String postId, String userId) throws InvalidPostException {
         Post post = repository.postIdentifiedAs(postId);
         post.likedBy(userId);
 
