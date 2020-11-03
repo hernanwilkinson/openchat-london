@@ -1,6 +1,7 @@
 package org.openchat.domain.posts;
 
 import org.openchat.domain.users.IdGenerator;
+import org.openchat.domain.users.InvalidUser;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -44,7 +45,7 @@ public class PostService {
         }
     }
 
-    public int likePost(String postId, String userId) throws InvalidPostException {
+    public int likePost(String postId, String userId) throws InvalidPostException, InvalidUser {
         Post post = repository.postIdentifiedAs(postId);
         post.likedBy(userId);
 

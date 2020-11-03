@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.openchat.domain.users.IdGenerator;
+import org.openchat.domain.users.InvalidUser;
 import org.openchat.infrastructure.builders.PostBuilder;
 
 import java.time.LocalDateTime;
@@ -67,7 +68,7 @@ public class PostServiceShould {
         assertThat(result).isEqualTo(POSTS);
     }
     @Test public void
-    like_post() throws InvalidPostException {
+    like_post() throws InvalidPostException, InvalidUser {
         Post NEW_POST = new PostBuilder().withPostId(POSTID).withUserId(USER_ID).withText("text").withDateTime(DATE_TIME).build();
         given(postRepository.postIdentifiedAs(POSTID)).willReturn(NEW_POST);
 
@@ -76,7 +77,7 @@ public class PostServiceShould {
         assertThat(likes).isEqualTo(1);
     }
     @Test public void
-    different_users_likes_do_count() throws InvalidPostException {
+    different_users_likes_do_count() throws InvalidPostException, InvalidUser {
         Post NEW_POST = new PostBuilder().withPostId(POSTID).withUserId(USER_ID).withText("text").withDateTime(DATE_TIME).build();
         final String anotherUserId = UUID.randomUUID().toString();
 
@@ -88,7 +89,7 @@ public class PostServiceShould {
         assertThat(likes).isEqualTo(2);
     }
     @Test public void
-    same_user_likes_do_not_count() throws InvalidPostException {
+    same_user_likes_do_not_count() throws InvalidPostException, InvalidUser {
         Post NEW_POST = new PostBuilder().withPostId(POSTID).withUserId(USER_ID).withText("text").withDateTime(DATE_TIME).build();
 
         given(postRepository.postIdentifiedAs(POSTID)).willReturn(NEW_POST);

@@ -6,6 +6,7 @@ import org.openchat.domain.posts.InappropriateLanguageException;
 import org.openchat.domain.posts.InvalidPostException;
 import org.openchat.domain.posts.Post;
 import org.openchat.domain.posts.PostService;
+import org.openchat.domain.users.InvalidUser;
 import spark.Request;
 import spark.Response;
 
@@ -71,6 +72,10 @@ public class PostsAPI {
         } catch (InvalidPostException e){
             // TODO!!
             return "Implementar!!";
+        } catch (InvalidUser invalidUser) {
+            response.status(NOT_FOUND_404);
+            response.type("application/json");
+            return "Invalid user";
         }
     }
 }

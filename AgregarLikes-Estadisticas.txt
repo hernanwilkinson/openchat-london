@@ -22,3 +22,6 @@
 - Likes en Post json
     - Clases: 3
     - Diferencias: 3
+- Test reject_likes_from_not_registered_user
+    - Clases: 5
+    - Diferencias: 14
