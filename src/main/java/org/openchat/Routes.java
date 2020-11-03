@@ -35,7 +35,7 @@ public class Routes {
         Clock clock = new Clock();
         PostRepository postRepository = new PostRepository();
         LanguageService languageService = new LanguageService();
-        PostService postService = new PostService(languageService, idGenerator, clock, postRepository);
+        PostService postService = new PostService(languageService, idGenerator, clock, postRepository,userRepository);
         WallService wallService = new WallService(userService, postRepository);
 
         usersAPI = new UsersAPI(userService);
@@ -55,11 +55,7 @@ public class Routes {
         post("followings", (req, res) -> followingAPI.createFollowing(req, res));
         get("followings/:followerId/followees", (req, res) -> followingAPI.getFollowees(req, res));
         get("users/:userId/wall", (req, res) -> wallAPI.wallByUser(req, res));
-        post("publications/:publicationId/like", (req, res) -> likePublication(req,res));
-    }
-
-    private String likePublication(Request request, Response response) {
-        throw new RuntimeException("Should implement");
+        post("publications/:publicationId/like", (req, res) -> postsAPI.likePost(req,res));
     }
 
     private void swaggerRoutes() {

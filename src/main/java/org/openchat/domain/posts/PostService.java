@@ -18,13 +18,6 @@ public class PostService {
     public PostService(LanguageService languageService,
                        IdGenerator idGenerator,
                        Clock clock,
-                       PostRepository repository) {
-        this(languageService, idGenerator, clock, repository, null);
-    }
-
-    public PostService(LanguageService languageService,
-                       IdGenerator idGenerator,
-                       Clock clock,
                        PostRepository repository, UserRepository userRepository) {
         this.languageService = languageService;
         this.idGenerator = idGenerator;

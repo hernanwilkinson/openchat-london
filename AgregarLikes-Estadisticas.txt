@@ -31,3 +31,6 @@
 - Test reject_likes_from_invalid_post
     - Clases: 6
     - Diferecias: 23 (muchas son por rename de InvalidUser a InvalidUserException)
+- Test de aceptación pasando
+    - Clases: 2
+    - Diferencias: 4
