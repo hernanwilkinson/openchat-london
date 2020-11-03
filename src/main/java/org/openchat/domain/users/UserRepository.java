@@ -1,5 +1,7 @@
 package org.openchat.domain.users;
 
+import org.openchat.domain.posts.PostService;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,14 +46,17 @@ public class UserRepository {
         return followings.stream()
                          .filter(following -> following.followerId().equals(followerId))
                          .map(following -> following.followeeId())
-                         .map(followeeId -> userBy(followeeId))
+                         .map(followeeId -> userBy(followeeId).get())
                          .collect(Collectors.toList());
     }
 
-    private User userBy(String userId) {
+    public Optional<User> userBy(String userId) {
         return users.stream()
                     .filter(user -> user.id().equals(userId))
-                    .findFirst()
-                    .get();
+                    .findFirst();
+    }
+
+    public User userByOrThrow(String userId) throws InvalidUser {
+        return userBy(userId).orElseThrow(() -> new InvalidUser());
     }
 }

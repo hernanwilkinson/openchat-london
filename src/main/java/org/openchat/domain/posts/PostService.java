@@ -2,6 +2,8 @@ package org.openchat.domain.posts;
 
 import org.openchat.domain.users.IdGenerator;
 import org.openchat.domain.users.InvalidUser;
+import org.openchat.domain.users.User;
+import org.openchat.domain.users.UserRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,15 +13,24 @@ public class PostService {
     private final IdGenerator idGenerator;
     private final Clock clock;
     private PostRepository repository;
+    private final UserRepository userRepository;
 
     public PostService(LanguageService languageService,
                        IdGenerator idGenerator,
                        Clock clock,
                        PostRepository repository) {
+        this(languageService, idGenerator, clock, repository, null);
+    }
+
+    public PostService(LanguageService languageService,
+                       IdGenerator idGenerator,
+                       Clock clock,
+                       PostRepository repository, UserRepository userRepository) {
         this.languageService = languageService;
         this.idGenerator = idGenerator;
         this.clock = clock;
         this.repository = repository;
+        this.userRepository = userRepository;
     }
 
     public Post createPost(String userId, String text) throws InappropriateLanguageException{
@@ -47,7 +58,8 @@ public class PostService {
 
     public int likePost(String postId, String userId) throws InvalidPostException, InvalidUser {
         Post post = repository.postIdentifiedAs(postId);
-        post.likedBy(userId);
+        User liker = userRepository.userByOrThrow(userId);
+        post.likedBy(liker);
 
         return post.likes();
     }

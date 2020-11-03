@@ -1,5 +1,7 @@
 package org.openchat.domain.posts;
 
+import org.openchat.domain.users.User;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +14,7 @@ public class Post {
     private final String userId;
     private final String text;
     private final LocalDateTime dateTime;
-    private final Set<String> likers = new HashSet<>();
+    private final Set<User> likers = new HashSet<>();
 
     public Post(String postId, String userId, String text, LocalDateTime dateTime) {
         this.postId = postId;
@@ -47,8 +49,8 @@ public class Post {
         return reflectionHashCode(this);
     }
 
-    public void likedBy(String userId) {
-        likers.add(userId);
+    public void likedBy(User liker) {
+        likers.add(liker);
     }
 
     public int likes() {

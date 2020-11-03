@@ -7,7 +7,9 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.openchat.domain.users.IdGenerator;
 import org.openchat.domain.users.InvalidUser;
+import org.openchat.domain.users.UserRepository;
 import org.openchat.infrastructure.builders.PostBuilder;
+import org.openchat.infrastructure.builders.UserBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.UUID;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
@@ -33,12 +36,13 @@ public class PostServiceShould {
     @Mock Clock clock;
     @Mock PostRepository postRepository;
     @Mock LanguageService languageService;
+    @Mock UserRepository userRepository;
 
     PostService service;
 
     @Before
     public void initialise() {
-        service = new PostService(languageService, idGenerator, clock, postRepository);
+        service = new PostService(languageService, idGenerator, clock, postRepository, userRepository);
     }
 
     @Test public void
@@ -82,6 +86,8 @@ public class PostServiceShould {
         final String anotherUserId = UUID.randomUUID().toString();
 
         given(postRepository.postIdentifiedAs(POSTID)).willReturn(NEW_POST);
+        given(userRepository.userByOrThrow(USER_ID)).willReturn(UserBuilder.aUser().withId(USER_ID).build());
+        given(userRepository.userByOrThrow(anotherUserId)).willReturn(UserBuilder.aUser().withId(anotherUserId).build());
 
         service.likePost(POSTID,USER_ID);
         int likes = service.likePost(POSTID, anotherUserId);
@@ -98,5 +104,16 @@ public class PostServiceShould {
         int likes = service.likePost(POSTID, USER_ID);
 
         assertThat(likes).isEqualTo(1);
+    }
+    @Test public void
+    throw_invalid_user_when_liking_with_invalid_user_id() throws InvalidPostException, InvalidUser {
+        Post NEW_POST = new PostBuilder().withPostId(POSTID).withUserId(USER_ID).withText("text").withDateTime(DATE_TIME).build();
+
+        given(postRepository.postIdentifiedAs(POSTID)).willReturn(NEW_POST);
+        given(userRepository.userByOrThrow("")).willThrow(new InvalidUser());
+
+        assertThatThrownBy(()->service.likePost(POSTID,"")).isInstanceOf(InvalidUser.class);
+
+        assertThat(NEW_POST.likes()).isEqualTo(0);
     }
 }

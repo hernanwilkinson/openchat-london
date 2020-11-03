@@ -25,3 +25,6 @@
 - Test reject_likes_from_not_registered_user
     - Clases: 5
     - Diferencias: 14
+- Test throw_invalid_user_when_liking_with_invalid_user_id
+    - Clases: 4
+    - Diferencias: 20
