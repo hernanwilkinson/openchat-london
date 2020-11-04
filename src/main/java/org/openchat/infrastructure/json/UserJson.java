@@ -22,6 +22,7 @@ public class UserJson {
         return new JsonObject()
                 .add("id", user.id())
                 .add("username", user.username())
-                .add("about", user.about());
+                .add("about", user.about())
+                .add("url",user.url());
     }
 }

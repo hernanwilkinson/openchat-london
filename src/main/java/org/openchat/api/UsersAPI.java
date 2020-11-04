@@ -48,6 +48,7 @@ public class UsersAPI {
         return new RegistrationData(
                             json.getString("username", ""),
                             json.getString("password", ""),
-                            json.getString("about", ""));
+                            json.getString("about", ""),
+                            json.getString("url",""));
     }
 }

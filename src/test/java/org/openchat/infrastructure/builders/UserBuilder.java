@@ -9,6 +9,7 @@ public class UserBuilder {
     private String username = "Username";
     private String password = "password";
     private String about = "about";
+    private String url = "url not defined";
 
     public static UserBuilder aUser() {
         return new UserBuilder();
@@ -35,6 +36,11 @@ public class UserBuilder {
     }
 
     public User build() {
-        return new User(id, username, password, about);
+        return new User(id, username, password, about,url);
+    }
+
+    public UserBuilder withUrl(String url) {
+        this.url = url;
+        return this;
     }
 }
